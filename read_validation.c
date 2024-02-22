@@ -26,8 +26,7 @@ Status read_validation(int argc,char *argv[],slist_t **head)
 				{
 					printf("Warning : %s File is empty\n",argv[i]);
 				}
-                
-					fclose(fp);
+                fclose(fp);
 			}
 			else
 			{
@@ -60,8 +59,8 @@ Status insert_last(slist_t **head,char *string)
 	   {
      		 *head=new_node;
 	   }
-	    else
-	    {
+	   else
+	   {
 		   slist_t *temp=*head;
 		   int flag=0;
 		   while(temp!=NULL)
@@ -86,5 +85,5 @@ Status insert_last(slist_t **head,char *string)
 		 {
 				return FAILURE;
 		 }
-        }
+      }
 }
