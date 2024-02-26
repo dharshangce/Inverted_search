@@ -5,7 +5,7 @@
 #include <stdlib.h>
 
 
-Status create_database(Hash_t *hash,Main_t **main,Sub_t **sub,slist_t *head)
+Status create_database(Hash_t *hash,Main_t **main,Sub_t **sub,slist_t *head,slist_t *up_head)
 {
 	FILE *fp;
 	char file_name[20];
@@ -13,6 +13,16 @@ Status create_database(Hash_t *hash,Main_t **main,Sub_t **sub,slist_t *head)
 	char str[20];
 	while(head)
 	{
+		if(up_head!=NULL)
+		{
+			slist_t *t=head;
+			while(t!=NULL && up_head!=NULL)
+			{
+				t=t->link;
+				up_head=up_head->link;
+			}
+			head=t;
+		}
 		strcpy(file_name,head->str);
 		fp=fopen(file_name ,"r");
 		if(fp==NULL)
@@ -119,6 +129,7 @@ Status create_database(Hash_t *hash,Main_t **main,Sub_t **sub,slist_t *head)
 		
 			
      fclose(fp);
+	 printf("Info : Database is created for %s\n",head->str);
      head=head->link;
 	 
 	

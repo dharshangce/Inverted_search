@@ -23,11 +23,11 @@ Status search(Hash_t *hash,Main_t *main,Sub_t *sub,char *str,int size)
 	   {
 		   if(strcmp(temp_main->word,str)==0)
 		   {
-			   printf("word %s is present in %d file/s\n",str,temp_main->file_count);
+			   printf("Info : word %s is present in %d file/s\n",str,temp_main->file_count);
 			   Sub_t *temp_sub=temp_main->sub_link;
 			   while(temp_sub)
 			   {
-				   printf("In file : %s %d time/s \n",temp_sub->file_name,temp_sub->word_count);
+				   printf("Info : In file : %s %d time/s \n",temp_sub->file_name,temp_sub->word_count);
 				   temp_sub=temp_sub->link;
 			   }
 			   return SUCCESS;

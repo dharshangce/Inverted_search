@@ -16,7 +16,7 @@ Status read_validation(int argc,char *argv[],slist_t **head)
 				if(ftell(fp)>1)
 				{
 					
-                    printf("%s File is non empty\n",argv[i]);
+                    //printf("%s File is non empty\n",argv[i]);
 					 if(insert_last(head,argv[i])==FAILURE)
 					 {
 						 printf("Warning : %s Duplicate files found\n",argv[i]);

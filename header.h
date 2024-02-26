@@ -41,8 +41,11 @@ typedef struct sub_node
 Status read_validation(int argc ,char *argv[],slist_t **head);
 Status insert_last(slist_t **,char *);
 Status create_hashtable(Hash_t *,int );
-Status create_database(Hash_t *,Main_t **,Sub_t **,slist_t *);
+Status create_database(Hash_t *,Main_t **,Sub_t **,slist_t *,slist_t *);
 Status display(Hash_t *,int,Main_t *,Sub_t *);
 Status search(Hash_t *,Main_t *,Sub_t * ,char *,int);
+Status save_database(char *,Hash_t *,int ,Main_t *,Sub_t *);
+
+Status update(Hash_t *,Main_t **,Sub_t **,slist_t **,char *,int size);
 
 #endif

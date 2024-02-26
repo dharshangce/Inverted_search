@@ -4,6 +4,7 @@
 int main(int argc,char *argv[])
 {
 	slist_t *head=NULL;
+	slist_t *up_head=NULL;
 
 	Hash_t hash[27];
 	Main_t *main;
@@ -50,16 +51,16 @@ int main(int argc,char *argv[])
 	while(choice == 'y' || choice == 'Y')
 	{
         printf("Select your choice among following options : \n");
-		printf("1.Create DATABASE\n2.Display DATABASE\n3.Update DATABASE\n4.Search\n5.Save DATABASE\n");
+		printf("1.Create DATABASE\n2.Display DATABASE\n3.Update DATABASE\n4.Search\n5.Save DATABASE\n6.Exit\n");
 		printf("Enter your choice \n");
 		scanf("%d",&op);
 		switch(op)
 		{
 		case 1:
 		{
-			if(create_database(hash,&main,&sub,head)==SUCCESS)
+			if(create_database(hash,&main,&sub,head,up_head)==SUCCESS)
 			{
-				printf("Data base creation Successfully\n");
+				printf("Info : Data base creation Successfully\n");
 			}
 			else
 			{
@@ -73,6 +74,38 @@ int main(int argc,char *argv[])
 			display(hash,27,main,sub);
 			break;
 		}
+		case 3:
+		{
+			char filename[20];
+			printf("Enter the filename : ");
+			scanf("%s",filename);
+			if(update(hash,&main,&sub,&up_head,filename,27)==SUCCESS)
+			{
+
+            slist_t *temp=up_head;
+			if(up_head==NULL)
+			{
+				printf("Info : List is empty\n");
+			}
+			else
+			{
+				while(temp)
+				{
+					printf("%s -> ",temp->str);
+					temp=temp->link;
+				}
+				printf("Null\n");
+			}
+				printf("Info : Database is updated\n");
+			}
+			else
+			{
+				printf("Info : Error in Database updation\n");
+				return FAILURE;
+			}
+			break;	
+
+		}
 		case 4:
 		{
 			char str[32];
@@ -83,8 +116,27 @@ int main(int argc,char *argv[])
 				printf("Info : Search Word is not Present\n");
 				return FAILURE;
 			}
+			break;
 		}
+		case 5:
+		{
+			char file[20];
+			printf("Enter the filename : ");
+			scanf("%s",file);
+			if(save_database(file,hash,27,main,sub)==SUCCESS)
+			{
+				printf("Info : Save the DATABASE Successfully\n");
+			}
+			else
+			{
+				printf("Error : Save DATABASE Failure\n");
+			}
+			break;
 		}
+		case 6:
+		  return 0;
+		
+	  }
 		printf("Do you want to continue ?\n");
 		printf("Enter y/Y to continue and n/N to discontinue\n");
 		scanf(" %c",&choice);
