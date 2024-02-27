@@ -1,6 +1,13 @@
 #include <stdio.h>
 #include "header.h"
 
+/*NAME  : DHARSHANRAJ.V
+  USERNAME:23026_470
+  DESCRIPTION : INVERTED SEARCH
+  DATE : 27/02/2024
+*/
+
+
 int main(int argc,char *argv[])
 {
 	slist_t *head=NULL;
@@ -65,7 +72,6 @@ int main(int argc,char *argv[])
 			else
 			{
 				printf("Error : Data base creation failure\n");
-				return FAILURE;
 			}
 			break;
 		}
@@ -100,8 +106,7 @@ int main(int argc,char *argv[])
 			}
 			else
 			{
-				printf("Info : Error in Database updation\n");
-				return FAILURE;
+				printf("Error : Database updation Failure\n");
 			}
 			break;	
 
@@ -114,7 +119,6 @@ int main(int argc,char *argv[])
 			if(search(hash,main,sub,str,27)==FAILURE)
 			{
 				printf("Info : Search Word is not Present\n");
-				return FAILURE;
 			}
 			break;
 		}

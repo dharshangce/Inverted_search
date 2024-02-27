@@ -20,7 +20,8 @@ Status update(Hash_t *hash,Main_t **main,Sub_t **sub,slist_t **up_head,char *fil
 	fseek(fp,-2,SEEK_END);
     c=getc(fp);
 	if(*up_head!=NULL)
-	{
+	{ 
+		printf("Warning : Database is already Updated\n ");
 		return FAILURE;
 	}
 	if(ch=='#' && c=='#')
@@ -136,6 +137,7 @@ Status update(Hash_t *hash,Main_t **main,Sub_t **sub,slist_t **up_head,char *fil
 	}
 	else
 	{
+         printf("Info : %s file is not a Backup file\n",filename);
 		return FAILURE;
 	}
 }
