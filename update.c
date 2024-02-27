@@ -28,7 +28,6 @@ Status update(Hash_t *hash,Main_t **main,Sub_t **sub,slist_t **up_head,char *fil
 		fseek(fp,0,SEEK_SET);
 		while(fscanf(fp,"%s",str)==1)
 		{
-			printf("%s\n",str);
           index=atoi(strtok(&str[1],";"));
 	      if(hash[index].link==NULL)
 		  {
